@@ -49,8 +49,8 @@ require_once('connect.php');
     $vida =  floor((($CON/5)+($TAM/5))/2);
     $sanidade = $POD;
 
-    $fordf = $FOR / 5;
-    $tamdf = $TAM / 5;
+    $fordf = ceil($FOR / 5);
+    $tamdf = ceil($TAM / 5);
 
     $bdbase = $fordf + $tamdf;
 
