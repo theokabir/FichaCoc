@@ -40,7 +40,7 @@ $nome_pers = $personagem['nome'];
                     </tr>
                 </table>
 
-                <label for="extra"> <input type="checkbox" name="extra" id="extra"> Pericia extra</label>
+                <label for="extra"> <input type="checkbox" name="extra" id="extra"> Destacar</label>
                 
                 <input type="submit" value="Criar" class="btn btn-success btn-block mt-2">
             </div>
