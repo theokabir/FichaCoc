@@ -15,7 +15,7 @@ require_once('connect.php');
             $idade = (isset($_POST['idade']))?$_POST['idade']:18;
             $sorte = (isset($_POST['sorte']))?$_POST['sorte']:1;
 
-            if($sorte > 10){
+            if($sorte > 100){
                 $sorte = 100;
             }
 
