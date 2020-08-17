@@ -13,6 +13,11 @@ require_once('connect.php');
 
         //campos number
             $idade = (isset($_POST['idade']))?$_POST['idade']:18;
+            $sorte = (isset($_POST['sorte']))?$_POST['sorte']:1;
+
+            if($sorte > 10){
+                $sorte = 100;
+            }
 
         //campos date
             $datanascimento = (isset($_POST['datanascimento']))?$_POST['datanascimento']:date("Y-m-d");
@@ -66,7 +71,7 @@ require_once('connect.php');
     }
 
 //querys
-    $query_personagem = "UPDATE personagem SET nome = '$nome', jogador = '$jogador', localnascimento = '$localnascimento', datanascimento = '$datanascimento', idade = '$idade', sexo = '$sexo', bd = '$BD', vidatotal = '$vida', vidaatual = '$vida', sanidade = '$sanidade', historia = '$historia', ocupacao = '$ocupacao' WHERE id = '1'";
+    $query_personagem = "UPDATE personagem SET nome = '$nome', jogador = '$jogador', localnascimento = '$localnascimento', datanascimento = '$datanascimento', idade = '$idade', sexo = '$sexo', bd = '$BD', vidatotal = '$vida', vidaatual = '$vida', sanidade = '$sanidade', historia = '$historia', ocupacao = '$ocupacao', sorte='$sorte' WHERE id = '1'";
     $query_renda = "UPDATE renda SET Renda = '$renda', Diario = '$diario', Economia = '$economia', Posse = '$posse', Imoveis = '$imoveis'  WHERE ID = '1' ";
     //caracteristicas
         $query_FOR = "UPDATE caracteristica SET pontos = '$FOR' WHERE ID = '1'";

@@ -48,7 +48,7 @@ $nome_pers = $personagem['nome'];
                 </table>
 
                 <label for="check" class="col-12"> <input type="checkbox" name="check" id="check" <?php if($pericia['Checado'] == 1){echo "checked";} ?> > Checar</label>
-                <label for="extra" class="col-12"> <input type="checkbox" name="extra" id="extra" <?php if($pericia['extra'] == 1){echo "checked";} ?> > Pericia extra</label>
+                <label for="extra" class="col-12"> <input type="checkbox" name="extra" id="extra" <?php if($pericia['extra'] == 1){echo "checked";} ?> > Destacar</label>
 
                 <input type="hidden" name="id" value="<?php echo $id;?>">
                 <input type="submit" value="Editar" class="btn btn-success btn-block mt-2">

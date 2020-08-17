@@ -43,7 +43,7 @@ $nome_pers = $personagem['nome'];
                     <li class="mx-0 mb-2">
                         <!-- Personagem -->
                         <div class="border p-4 rounded">
-                            <h5 class="text-center"><strong>Personagem</strong> <a href="EditPersonagemForm.php" class="btn btn-outline-secondary">Editar</a> </h5>
+                            <h5 class="text-center"><strong>Personagem</strong> <a href="EditPersonagemForm.php" class="btn btn-outline-success">Editar</a> </h5>
                             <?php
                             echo "<b>Nome: </b>" . $personagem['nome'] ."<br>";
                             echo "<b>Jogador: </b>" . $personagem['jogador'] ."<br>";
@@ -53,19 +53,20 @@ $nome_pers = $personagem['nome'];
                             echo "<b>Idade: </b>" . $personagem['idade'] ."<br>";
                             echo "<b>Sexo: </b>" . $personagem['sexo'] ."<br>";
                             echo "<b>Bônus de dano: </b>" . $personagem['bd'] ."<br>";
-                            echo "<b>Vida: </b><span style=\"color: red\">" . $personagem['vidaatual'] . "/" .$personagem['vidatotal']. "</span> <a href=\"addLife.php?life=". $personagem['vidaatual'] . "\" class=\"btn btn-outline-danger\">+</a><a href=\"subLife.php?life=" .$personagem['vidaatual']. "\" class=\"btn btn-outline-danger\"> - </a> <br>";
+                            echo "<b>Vida: </b><span style=\"color: red\">" . $personagem['vidaatual'] . "/" .$personagem['vidatotal']. "</span> <a href=\"addLife.php?life=". $personagem['vidaatual'] . "\" class=\"btn-life d-inline-block\">+</a><a href=\"subLife.php?life=" .$personagem['vidaatual']. "\" class=\"btn-life d-inline-block menos\"> - </a> <br>";
                             ?>
                             <input type="checkbox" name="#" id="#"> Morrendo <br>
                             <input type="checkbox" name="#" id="#"> Lesão Grave <br>
                             <?php
-                            echo "<b>Sanidade: </b><span style=\"color: blue\">" . $personagem['sanidade'] . "/99</span> <a href=\"addSan.php?san=".$personagem['sanidade']."\" class=\"btn btn-outline-primary\">+</a><a href=\"subSan.php?san=".$personagem['sanidade']."\" class=\"btn btn-outline-primary\">-</a> <br>";
+                            echo "<b>Sanidade: </b><span style=\"color: blue\">" . $personagem['sanidade'] . "/99</span> <a href=\"addSan.php?san=".$personagem['sanidade']."\" class=\"btn-sanity d-inline-block\">+</a><a href=\"subSan.php?san=".$personagem['sanidade']."\" class=\"btn-sanity d-inline-block menos\">-</a> <br>";
+                            echo "<b>Sorte: </b><span style=\"color:green\">" . $personagem['sorte'] ."</span><br>";
                             ?>
 
                         </div>
                     </li>
                     <li class="mx-0">
                         <!-- Renda -->
-                        <div class="border p-4 rounded"> 
+                        <div class="border p-4 rounded caixaRenda"> 
                             <?php 
                             $query_renda = "SELECT * FROM renda";
                             $query_result_renda = mysqli_query($conn, $query_renda);
@@ -88,7 +89,7 @@ $nome_pers = $personagem['nome'];
             </div>
 
             <!-- Caracteristicas -->
-            <div class="col-lg-2 col-12">
+            <div class="col-lg-2 col-12" style="margin-top: 25px">
                 <div class="col-12 caixa">
                     <?php
                     $query_caracteristicas = "SELECT * FROM caracteristica";
@@ -120,20 +121,56 @@ $nome_pers = $personagem['nome'];
             <div class="col-lg-7 col-12">
 
                     <div class="col-12 border rounded caixa">
-                        <h5 class="text-center mt-2"><strong>Pericias  </strong><a href="criarPericiaForm.php" class="btn btn-outline-secondary">Criar nova</a></h5>
+                        <h5 class="text-center mt-3"><strong>Pericias  </strong><a href="criarPericiaForm.php" class="btn btn-outline-success">Criar nova</a></h5>
 
                         <?php
                         
-                        $query_pericias = "SELECT * FROM pericia ORDER BY Nome";
+                        $query_pericias = "SELECT * FROM pericia WHERE extra = '0' ORDER BY Nome";
                         $query_result_pericias = mysqli_query($conn, $query_pericias);
+
+                        $query_destacados = "SELECT * FROM pericia WHERE extra = '1' ORDER BY Nome";
+                        $query_destacados_result = mysqli_query($conn, $query_destacados);
 
                         ?>
 
-                        <div class="row border-top rounded">
+                        <div class="row border-top rounded caixaPericias">
+                        
+                        <?php while($pericias_destacadas = mysqli_fetch_assoc($query_destacados_result)): ?>
+                            
+                            <div class="col-3 p-0 h my-3" style="height: 61px">
+                                <div class="border rounded m-1 row <?php if($pericias_destacadas['extra']==1){echo " bg-light\" style=\" color: #0065b8" ;} ?>">
+                                    <div class="col-8 border-right p-1" style="font-size: 15px">
+                                        <input type="checkbox" name="<?php $pericias_destacadas['ID']; ?>" id="<?php $pericias_destacadas['ID']; ?>" <?php if($pericias_destacadas['Checado']==1){echo "checked"; } ?> disabled>
+                                        <a href="editarPericia.php?id=<?php echo $pericias_destacadas['ID']; ?>" class="linkPericia"><?php echo $pericias_destacadas['Nome']; ?></a> <br> (<?php echo $pericias_destacadas['Minimo']; ?>%) 
+                                        <?php 
+                                        if(($pericias_destacadas['SubNome']) ){
+
+                                            echo "<br>".$pericias_destacadas['SubNome'];
+
+                                        } 
+                                        ?>
+                                    
+                                    </div>
+
+                                    <div class="col-4 ">
+                                        <table class="my-1">
+                                            <tr>
+                                                <td rowspan=2 class="border-right"><?php echo $pericias_destacadas['Pontos']; ?></td>
+                                                <td class="border-bottom"><?php echo (ceil($pericias_destacadas['Pontos']/2)); ?></td>
+                                            </tr>
+                                            <tr>
+                                                <td><?php echo (ceil($pericias_destacadas['Pontos']/5)); ?></td>
+                                            </tr>
+                                        </table>
+                                    </div>
+                                </div>
+                            </div>
+
+                        <?php endwhile; ?>
                         
                             <?php while($pericias = mysqli_fetch_assoc($query_result_pericias)): ?>
                                 
-                                <div class="col-3 p-0 h-100">
+                                <div class="col-3 p-0 h my-3" style="height: 61px">
                                     <div class="border rounded m-1 row <?php if($pericias['extra']==1){echo " bg-light\" style=\" color: #0065b8" ;} ?>">
                                         <div class="col-8 border-right p-1" style="font-size: 15px">
                                             <input type="checkbox" name="<?php $pericias['ID']; ?>" id="<?php $pericias['ID']; ?>" <?php if($pericias['Checado']==1){echo "checked"; } ?> disabled>
@@ -172,7 +209,7 @@ $nome_pers = $personagem['nome'];
                             ?>
                             <?php while($armasdefogo = mysqli_fetch_assoc($query_result_armasdefogo)): ?>
                                 
-                                <div class="col-3 p-0 h-100">
+                                <div class="col-3 p-0 h">
                                     <div class="border rounded m-1 row">
                                         <div class="col-8 border-right p-1" style="font-size: 15px">
                                         <input type="checkbox" name="<?php $armasdefogo['ID']; ?>" id="<?php $armasdefogo['ID']; ?>" <?php if($armasdefogo['Checado']==1){echo "checked"; } ?> disabled>
@@ -203,8 +240,8 @@ $nome_pers = $personagem['nome'];
         </div>
 
         <!-- segunda row -->
-        <div class="row">
-            <div class="col-12 col-lg-8 p-4 border rounded">
+        <div class="row border rounded">
+            <div class="col-12 col-lg-8 p-4">
                 <!-- golpes e armas -->
                 <div class="row" id="armas">
                     <!-- golpes -->
@@ -234,7 +271,7 @@ $nome_pers = $personagem['nome'];
 
                     </div>
                     <!-- armas -->
-                    <div class="col-6" id="armas">
+                    <div class="col-6 border-right" id="armas">
                         <h5 class="text-center"><strong>Armas</strong>  <a href="addArmaForm.php" class="btn btn-outline-success">Adicionar</a></h5>
                         <?php if(isset($_SESSION['msg_success_arma'])): ?>
                         <div class="alert alert-success alert-dismissible fade show" role="alert">
@@ -285,7 +322,7 @@ $nome_pers = $personagem['nome'];
                                     <a href="deletarArma.php?id=<?php echo $armas['ID']; ?>" class="btn btn-outline-danger<?php if($armas['BalasTotal'] > 0){echo " mt-4 ";}else{echo " mt-1 ";} ?>">X</a> 
                                 </div>
                                 <?php if($armas['BalasTotal'] > 0): ?>
-                                    <p class="col-12"><a href="atirar.php?id=<?php echo $armas['ID']; ?>" class="btn btn-outline-info">atirar</a>   <a href="recarregar.php?id=<?php echo $armas['ID']; ?>" class="btn btn-outline-warning">Regarregar</a></p>
+                                    <p class="col-12"><a href="atirar.php?id=<?php echo $armas['ID']; ?>" class="btn btn-outline-info">atirar</a>   <a href="recarregar.php?id=<?php echo $armas['ID']; ?>" class="btn btn-outline-secondary">Regarregar</a></p>
                                 <?php endif;?>
                             </div>
 
@@ -324,8 +361,10 @@ $nome_pers = $personagem['nome'];
                     <?php while($itens = mysqli_fetch_assoc($query_result_itens)): ?>
 
                         <div class="border rounded p-4 my-2 row">
-                            <p class="col-10"> <?php echo $itens['Quantidade'] ; ?>x <strong><a href="editItemForm.php?id=<?php echo $itens['ID']; ?>" class="linkPericia"><?php echo $itens['Nome'] ; ?></a></strong></p>
+                            <p class="col-7"> <?php echo $itens['Quantidade'] ; ?>x <strong><a href="editItemForm.php?id=<?php echo $itens['ID']; ?>" class="linkPericia"><?php echo $itens['Nome'] ; ?></a></strong></p>
+                            <p class="col-3"><a href="useItem.php?id=<?php echo  $itens['ID']; ?>" class="btn btn-outline-info">Usar</a></p>
                             <p class="col-2"><a href="deletItem.php?id=<?php echo  $itens['ID']; ?>" class="btn btn-outline-danger">X</a></p>
+                            
                             <div class="border rounded p-2 col-12">
                                 <?php echo $itens['Descricao']; ?>
                             </div>
@@ -340,49 +379,45 @@ $nome_pers = $personagem['nome'];
         <!-- Terceira row -->
         <div class="row">
             <!-- Historia -->
-            <h5 class="text-center col-12"><strong>História</strong></h5>
+            <div class="col-6 border-right">
+                <h5 class="text-center col-12"><strong>História</strong></h5>
 
-        </div>
-        <div class="row">
 
-            <div class="col-12">
-                <div class="border rounded p-4" style="margin: 0px 200px">
-                    <?php echo $personagem['historia']; ?>
-                </div>
-            </div>
-
-        </div>
-        <hr>
-        <!-- quarta row -->
-        <div class="row">
-            <!-- Notas -->
-            <h5 class="text-center col-12" id="notas"><strong><a href="editNota.php">Notas</a></strong></h5>
-            
-        </div>
-        <div class="row">
-
-            <div class="col-12">
-                <div class="border rounded p-4" style="margin: 0px 200px">
-                <?php if(isset($_SESSION['msg_success_nota'])): ?>
-                    <div class="alert alert-success alert-dismissible fade show col-12" role="alert">
-                        <?php echo $_SESSION['msg_success_nota']; ?>
-                        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-                            <span aria-hidden="true">&times;</span>
-                        </button>
+                <div class="col-12">
+                    <div class="border rounded p-4">
+                        <?php echo $personagem['historia']; ?>
                     </div>
-                <?php endif; ?>
-                <?php
-                
-                    $query_nota = "SELECT * FROM nota";
-                    $query_result_nota = mysqli_query($conn, $query_nota);
-                    $nota = mysqli_fetch_assoc($query_result_nota);
-
-                    echo $nota['NotaText'];
-
-                ?>
                 </div>
+
             </div>
 
+            <!-- Notas -->
+            <div class="col-6">
+                <h5 class="text-center col-12" id="notas"><strong><a href="editNota.php">Notas</a></strong></h5>
+                
+
+                <div class="col-12">
+                    <div class="border rounded p-4">
+                        <?php if(isset($_SESSION['msg_success_nota'])): ?>
+                            <div class="alert alert-success alert-dismissible fade show col-12" role="alert">
+                                <?php echo $_SESSION['msg_success_nota']; ?>
+                                <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                                    <span aria-hidden="true">&times;</span>
+                                </button>
+                            </div>
+                        <?php endif; ?>
+                        <?php
+                        
+                            $query_nota = "SELECT * FROM nota";
+                            $query_result_nota = mysqli_query($conn, $query_nota);
+                            $nota = mysqli_fetch_assoc($query_result_nota);
+
+                            echo $nota['NotaText'];
+
+                        ?>
+                    </div>
+                </div>
+            </div>
         </div>
     </div>
     <script src="./public/js/jquery.js"></script>

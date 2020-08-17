@@ -8,7 +8,7 @@ ul{
 }
 
 .caixa{
-    height: 100%;
+    height: 745px;
     width: 100%;
 }
 
@@ -26,14 +26,52 @@ ul{
     margin: 0px 0px 0px 0px;
 }
 
-.h-100{
-    height: 100%;
-}
-
 .linkPericia{
     color: black
 }
 
 .linkPericia:hover{
     color: black;
+}
+
+.caixaPericias{
+    height: 680px;
+    overflow: auto;
+}
+
+.caixaRenda{
+    height: 300px;
+    overflow: auto;
+}
+
+.btn-life{
+    border: 1px solid red;
+    border-radius: 3px;
+    margin: 0 5px;
+    padding: 0 5px;
+    color: red;
+}
+
+.btn-life:hover{
+    color: white;
+    text-decoration: none;
+    background-color: red;
+}
+
+.btn-sanity{
+    border: 1px solid blue;
+    border-radius: 3px;
+    margin: 0 5px;
+    padding: 0 5px;
+    color: blue;
+}
+
+.btn-sanity:hover{
+    color: white;
+    text-decoration: none;
+    background-color: blue;
+}
+
+.menos{
+    padding: 0 7px;
 }

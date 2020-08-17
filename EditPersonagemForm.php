@@ -71,6 +71,10 @@ $nome_pers = $personagem['nome'];
                         <!-- campo: sexo -->
                         <input required type="text" name="sexo" id="sexo" class="form form-control" value="<?php echo $personagem['sexo']; ?>">
 
+                    <label for="sorte">Sorte:</label>
+                        <!-- campo: sorte -->
+                        <input required type="number" name="sorte" id="sorte" class="form form-control" value="<?php echo $personagem['sorte']; ?>">
+
                 </div>
                 <!-- div de caracteristicas -->
                 <div class="col-12 p-4 border rounded mt-2">

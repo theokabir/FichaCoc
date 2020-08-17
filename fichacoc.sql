@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Aug 17, 2020 at 04:29 PM
+-- Generation Time: Aug 17, 2020 at 07:17 PM
 -- Server version: 10.4.13-MariaDB
 -- PHP Version: 7.4.7
 
@@ -138,7 +138,7 @@ CREATE TABLE `nota` (
 --
 
 INSERT INTO `nota` (`id`, `NotaText`) VALUES
-(1, '<span style=\"color: red\"> SEM ANOTAÇÕES </span>');
+(1, 'Adicione notas <a href=\"editNota.php\">aqui<a>');
 
 -- --------------------------------------------------------
 
@@ -161,8 +161,60 @@ CREATE TABLE `pericia` (
 --
 
 INSERT INTO `pericia` (`ID`, `Nome`, `SubNome`, `Minimo`, `Pontos`, `Checado`, `extra`) VALUES
-(23, 'esquiva', '', 1, 1, 0, 0),
-(24, 'Lutar/Briga', '', 30, 30, 0, 0);
+(157, 'Antropologia', '', 1, 1, 0, 0),
+(158, 'Arqueologia', '', 1, 1, 0, 0),
+(159, 'Arremessar', '', 25, 25, 0, 1),
+(160, 'Arte', '---', 5, 5, 0, 0),
+(161, 'Artes Marciais', '', 1, 1, 0, 0),
+(162, 'Astronomia', '', 1, 1, 0, 0),
+(163, 'Barganha', '', 5, 5, 0, 0),
+(164, 'Biologia', '', 1, 1, 0, 0),
+(165, 'Cavalgar', '', 5, 5, 0, 0),
+(166, 'Chaveiro', '', 1, 1, 0, 0),
+(167, 'Computação', '', 1, 1, 0, 0),
+(168, 'Contabilidade', '', 10, 10, 0, 0),
+(169, 'crédito', '', 15, 15, 0, 0),
+(170, 'Direito', '', 5, 5, 0, 0),
+(171, 'Dirigir Auto.', '', 20, 20, 0, 0),
+(172, 'Disfarce', '', 1, 1, 0, 0),
+(173, 'Eletrônica', '', 1, 1, 0, 0),
+(174, 'Escalar', '', 40, 40, 0, 1),
+(175, 'Esconder', '', 10, 10, 0, 0),
+(176, 'Escutar', '', 25, 25, 0, 1),
+(177, 'Esquiva', '', 1, 1, 0, 1),
+(178, 'Farmacia', '', 1, 1, 0, 0),
+(179, 'Física', '', 1, 1, 0, 0),
+(180, 'Fotografia', '', 10, 10, 0, 0),
+(181, 'Furtividade', '', 10, 10, 0, 0),
+(182, 'Geologia', '', 1, 1, 0, 0),
+(183, 'Historia', '', 20, 20, 0, 0),
+(184, 'Historia Natural', '', 10, 10, 0, 0),
+(185, 'Lábia', '', 5, 5, 0, 0),
+(186, 'Lingua Nativa', '', 1, 1, 0, 0),
+(187, 'Localizar', '', 25, 25, 0, 0),
+(188, 'Medicina ', '', 5, 5, 0, 1),
+(189, 'Nadar', '', 25, 25, 0, 0),
+(190, 'Navegar', '', 10, 10, 0, 0),
+(191, 'Ocultar', '', 15, 15, 0, 0),
+(192, 'Ocultismo', '', 5, 5, 0, 0),
+(193, 'Ofício', '', 1, 1, 0, 1),
+(194, 'Op. Maq. Pesada', '', 1, 1, 0, 0),
+(195, 'Outra Língua', '', 1, 1, 0, 0),
+(196, 'Persuadir', '', 15, 15, 0, 0),
+(197, 'Pesq. Biblioteca', '', 25, 25, 0, 0),
+(198, 'Pilotar', '', 1, 1, 0, 0),
+(199, 'Primeiros socorros', '', 30, 10, 0, 1),
+(200, 'Psicanálise', '', 1, 1, 0, 0),
+(201, 'Psicologia', '', 5, 5, 0, 0),
+(202, 'Pular/Saltar', '', 25, 25, 0, 1),
+(203, 'Química', '', 1, 1, 0, 0),
+(204, 'Rastrear', '', 10, 10, 0, 0),
+(205, 'Reparo elétrico ', '', 10, 10, 0, 0),
+(206, 'Reparo Mecânico', '', 20, 20, 0, 0),
+(208, 'Agarrar', '', 25, 25, 0, 0),
+(209, 'Cabeçada', '', 10, 10, 0, 0),
+(210, 'Chute', '', 25, 25, 0, 0),
+(211, 'Punho/Soco', '', 50, 50, 0, 1);
 
 -- --------------------------------------------------------
 
@@ -182,6 +234,7 @@ CREATE TABLE `personagem` (
   `bd` varchar(30) NOT NULL DEFAULT 'NONE',
   `vidatotal` int(11) NOT NULL DEFAULT 1,
   `vidaatual` int(11) NOT NULL DEFAULT 1,
+  `sorte` int(11) NOT NULL DEFAULT 1,
   `sanidade` int(11) NOT NULL DEFAULT 99,
   `morrendo` tinyint(1) NOT NULL DEFAULT 0,
   `lesaograve` tinyint(1) NOT NULL DEFAULT 0,
@@ -192,8 +245,8 @@ CREATE TABLE `personagem` (
 -- Dumping data for table `personagem`
 --
 
-INSERT INTO `personagem` (`id`, `nome`, `jogador`, `ocupacao`, `localnascimento`, `datanascimento`, `idade`, `sexo`, `bd`, `vidatotal`, `vidaatual`, `sanidade`, `morrendo`, `lesaograve`, `historia`) VALUES
-(1, 'Indefinido', 'Indefinido', 'Indefinido', 'Indefinido', '2020-07-17', 18, 'Indefinido', 'ERRO', 0, 0, 1, 0, 0, 'Indefinido');
+INSERT INTO `personagem` (`id`, `nome`, `jogador`, `ocupacao`, `localnascimento`, `datanascimento`, `idade`, `sexo`, `bd`, `vidatotal`, `vidaatual`, `sorte`, `sanidade`, `morrendo`, `lesaograve`, `historia`) VALUES
+(1, 'Indefinido', 'Indefinido', 'Indefinido', 'Indefinido', '9999-09-09', 18, 'Indefinido', 'ERRO', 0, 0, 1, 1, 0, 0, 'Insira a história do seu personagem');
 
 -- --------------------------------------------------------
 
@@ -215,7 +268,7 @@ CREATE TABLE `renda` (
 --
 
 INSERT INTO `renda` (`ID`, `Renda`, `Diario`, `Economia`, `Posse`, `Imoveis`) VALUES
-(1, 0, 0, 0, 'Indefinido', 'Indefinido');
+(1, 1, 1, 1, 'Insira as posses de seu personagem', 'Insira os imoveis do personagem');
 
 --
 -- Indexes for dumped tables
@@ -284,7 +337,7 @@ ALTER TABLE `renda`
 -- AUTO_INCREMENT for table `armas`
 --
 ALTER TABLE `armas`
-  MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=17;
+  MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=23;
 
 --
 -- AUTO_INCREMENT for table `armasdefogo`
@@ -308,7 +361,7 @@ ALTER TABLE `golpe`
 -- AUTO_INCREMENT for table `item`
 --
 ALTER TABLE `item`
-  MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
 
 --
 -- AUTO_INCREMENT for table `nota`
@@ -320,7 +373,7 @@ ALTER TABLE `nota`
 -- AUTO_INCREMENT for table `pericia`
 --
 ALTER TABLE `pericia`
-  MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=25;
+  MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=212;
 
 --
 -- AUTO_INCREMENT for table `personagem`
