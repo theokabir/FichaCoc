@@ -72,9 +72,9 @@ $nome_pers = $personagem['nome'];
                             $query_result_renda = mysqli_query($conn, $query_renda);
                             $renda = mysqli_fetch_assoc($query_result_renda);
 
-                            echo "<b>Renda:</b> R$:" . $renda['Renda'] . ",00<br>"; 
-                            echo "<b>Dinheiro diário:</b> R$:" . $renda['Diario'] . ",00<br>"; 
-                            echo "<b>Economia:</b> R$:" . $renda['Economia'] . ",00<br>"; 
+                            echo "<b>Renda:</b> R$" . $renda['Renda'] . ",00<br>"; 
+                            echo "<b>Dinheiro diário:</b> R$" . $renda['Diario'] . ",00<br>"; 
+                            echo "<b>Economia:</b> R$" . $renda['Economia'] . ",00<br>"; 
                             
                             echo "<b>Posse:</b><br>";
                             echo "<div class=\" border rounded p-2 historia\" > ". $renda['Posse'] ."</div>";
@@ -300,7 +300,7 @@ $nome_pers = $personagem['nome'];
 
                             <div class="border rounded my-2 mx-2 row">
                                 <div class="col-5">
-                                    <p><strong><a href="editArmaForm.php?id=<?php echo $armas['ID']; ?>" class="linkPericia"><?php echo $armas['Nome']; ?></a></strong>
+                                    <p><strong><a href="editArmaForm.php?id=<?php echo $armas['ID']; ?>" class="linkPericia"> <input type="checkbox" name="" id=""> <?php echo $armas['Nome']; ?></a></strong>
 
                                     <?php
                                     
