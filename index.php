@@ -301,7 +301,7 @@ $nome_pers = $personagem['nome'];
 
                             <div class="border rounded my-2 mx-2 row">
                                 <div class="col-5">
-                                    <p><strong><a href="editArmaForm.php?id=<?php echo $armas['ID']; ?>" class="linkPericia"> <input type="checkbox" name="" id=""> <?php echo $armas['Nome']; ?></a></strong>
+                                    <p><strong><a href="editArmaForm.php?id=<?php echo $armas['ID']; ?>" class="linkPericia"> <input type="checkbox" name="" id="" onclick="myFunction()"> <?php echo $armas['Nome']; ?></a></strong>
 
                                     <?php
                                     
@@ -379,15 +379,48 @@ $nome_pers = $personagem['nome'];
         <hr>
         <!-- Terceira row -->
         <div class="row">
-            <!-- Historia -->
+            <!-- Fobias -->
             <div class="col-6 border-right">
-                <h5 class="text-center col-12"><strong>História</strong></h5>
+                <h5 class="text-center col-12"><strong>Fobias </strong><a href="createFobiaForm.php" class="btn btn-outline-success">Criar</a></h5>
 
+                <?php
+                
+                $query_fobia = "SELECT * FROM fobia ORDER BY nome";
+                $query_result_fobia = mysqli_query($conn, $query_fobia);
+                
+                ?>
 
-                <div class="col-12">
-                    <div class="border rounded p-4">
-                        <?php echo $personagem['historia']; ?>
-                    </div>
+                <div class="col-12" id="fobias">
+                    <div class="border rounded p-4 row caixaFobia">
+                            <?php if(isset($_SESSION['msg_success_fobia'])): ?>
+                                <div class="alert alert-success alert-dismissible fade show col-12" role="alert">
+                                    <?php echo $_SESSION['msg_success_fobia']; ?>
+                                    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                                        <span aria-hidden="true">&times;</span>
+                                    </button>
+                                </div>
+                            <?php endif; ?>
+                            <?php if(isset($_SESSION['msg_danger_fobia'])): ?>
+                                <div class="alert alert-danger alert-dismissible fade show col-12" role="alert">
+                                    <?php echo $_SESSION['msg_danger_fobia']; ?>
+                                    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                                        <span aria-hidden="true">&times;</span>
+                                    </button>
+                                </div>
+                            <?php endif; ?>
+                            <?php while($fobia = mysqli_fetch_assoc($query_result_fobia)): ?>
+
+                                <div class="col-4">
+
+                                    <div class="border rounded p-1 mb-2">
+                                        <p><input type="checkbox" <?php if( $fobia['Checado'] == 1 ){echo "checked";} ?> disabled ><a href="editFobiaForm.php?id=<?php echo $fobia['ID']; ?>" class="linkPericia" >  <?php echo $fobia['Nome']; ?> </a><br>
+                                        <span style="font-size: 13px; color: grey"><?php echo $fobia['Descricao']; ?></span></p>
+                                    </div>
+
+                                </div>
+
+                            <?php endwhile; ?>
+                        </div>
                 </div>
 
             </div>
@@ -419,6 +452,23 @@ $nome_pers = $personagem['nome'];
                     </div>
                 </div>
             </div>
+        </div>
+        <hr>
+        <!-- quarta row -->
+        <div class="row">
+            <!-- Historia -->
+            <div class="col-12 border-right">
+                <h5 class="text-center col-12"><strong>História</strong></h5>
+
+
+                <div class="col-12">
+                    <div class="border rounded p-4">
+                        <?php echo $personagem['historia']; ?>
+                    </div>
+                </div>
+
+            </div>
+            
         </div>
     </div>
     <script src="./public/js/jquery.js"></script>

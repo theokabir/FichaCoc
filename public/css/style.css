@@ -75,3 +75,7 @@ ul{
 .menos{
     padding: 0 7px;
 }
+.caixaFobia{
+    height: 250px;
+    overflow: auto;
+}
