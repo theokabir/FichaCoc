@@ -385,8 +385,11 @@ $nome_pers = $personagem['nome'];
 
                 <?php
                 
-                $query_fobia = "SELECT * FROM fobia ORDER BY nome";
-                $query_result_fobia = mysqli_query($conn, $query_fobia);
+                $query_fobia1 = "SELECT * FROM fobia WHERE Checado = '0' ORDER BY nome";
+                $query_result_fobia1 = mysqli_query($conn, $query_fobia1);
+                
+                $query_fobia2 = "SELECT * FROM fobia WHERE Checado = '1' ORDER BY nome";
+                $query_result_fobia2 = mysqli_query($conn, $query_fobia2);
                 
                 ?>
 
@@ -408,7 +411,19 @@ $nome_pers = $personagem['nome'];
                                     </button>
                                 </div>
                             <?php endif; ?>
-                            <?php while($fobia = mysqli_fetch_assoc($query_result_fobia)): ?>
+                            <?php while($fobi2 = mysqli_fetch_assoc($query_result_fobia2)): ?>
+
+                                <div class="col-4">
+
+                                    <div class="border rounded p-1 mb-2">
+                                        <p><input type="checkbox" <?php if( $fobi2['Checado'] == 1 ){echo "checked";} ?> disabled ><a href="editFobiaForm.php?id=<?php echo $fobi2['ID']; ?>" class="linkPericia" >  <?php echo $fobi2['Nome']; ?> </a><br>
+                                        <span style="font-size: 13px; color: grey"><?php echo $fobi2['Descricao']; ?></span></p>
+                                    </div>
+
+                                </div>
+
+                            <?php endwhile; ?>
+                            <?php while($fobia = mysqli_fetch_assoc($query_result_fobia1)): ?>
 
                                 <div class="col-4">
 
@@ -431,7 +446,7 @@ $nome_pers = $personagem['nome'];
                 
 
                 <div class="col-12">
-                    <div class="border rounded p-4">
+                    <div class="border rounded p-4 mt-4 caixaFobia">
                         <?php if(isset($_SESSION['msg_success_nota'])): ?>
                             <div class="alert alert-success alert-dismissible fade show col-12" role="alert">
                                 <?php echo $_SESSION['msg_success_nota']; ?>
@@ -462,7 +477,7 @@ $nome_pers = $personagem['nome'];
 
 
                 <div class="col-12">
-                    <div class="border rounded p-4">
+                    <div class="border rounded p-4 caixaHistoria">
                         <?php echo $personagem['historia']; ?>
                     </div>
                 </div>

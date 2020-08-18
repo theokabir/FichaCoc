@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Aug 17, 2020 at 07:17 PM
+-- Generation Time: Aug 18, 2020 at 09:21 PM
 -- Server version: 10.4.13-MariaDB
 -- PHP Version: 7.4.7
 
@@ -35,6 +35,14 @@ CREATE TABLE `armas` (
   `BalasCarregadas` int(11) NOT NULL DEFAULT 0,
   `Pente` int(11) NOT NULL DEFAULT 0
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `armas`
+--
+
+INSERT INTO `armas` (`ID`, `Nome`, `Dano`, `BalasTotal`, `BalasCarregadas`, `Pente`) VALUES
+(25, 'Faca', '1d4', 0, 0, 0),
+(26, 'Glock', '1D10', 70, 7, 7);
 
 -- --------------------------------------------------------
 
@@ -90,6 +98,65 @@ INSERT INTO `caracteristica` (`ID`, `Nome`, `pontos`) VALUES
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `fobia`
+--
+
+CREATE TABLE `fobia` (
+  `ID` int(11) NOT NULL,
+  `Nome` varchar(30) NOT NULL,
+  `Descricao` text NOT NULL,
+  `Checado` tinyint(1) NOT NULL DEFAULT 0
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `fobia`
+--
+
+INSERT INTO `fobia` (`ID`, `Nome`, `Descricao`, `Checado`) VALUES
+(1, 'Acrofobia', 'Medo de altura', 0),
+(2, 'Ailurofobia', 'Medo de gato', 0),
+(3, 'Androfobia', 'Medo de homem', 0),
+(4, 'Astrapofobia', 'Medo de relâmpagos', 0),
+(7, 'Astrofobia', 'Medo de strelas', 0),
+(8, 'Bacteriofobia', 'Medo de bacterias', 0),
+(9, 'Ballistofobias', 'Medo de balas', 0),
+(10, 'Belonefobia', 'Medo de agulhas', 0),
+(11, 'Botanofobia', 'Medo de plantas', 0),
+(12, 'Blennofobia', 'Medo de coisas viscosas', 0),
+(14, 'Claustrofobia', 'Medo de lugares fechados', 0),
+(15, 'Clinofobia', 'Medo de camas', 0),
+(16, 'Demonofobia', 'Medo de Demônios', 0),
+(17, 'Dendrofobia', 'Medo de árvores', 0),
+(18, 'Dorafobia', 'medo de pelos', 0),
+(19, 'Entomofobia', 'Medo de insetos', 0),
+(20, 'Ergofobia', 'Medo de trabalho', 0),
+(21, 'Escolecifobia', 'Medo de vermes', 0),
+(22, 'Gefirdrofobia', 'Medo de pontes', 0),
+(23, 'Ginefobia', 'Medo de Mulheres', 0),
+(24, 'Hematofobia', 'Medo de sangue', 0),
+(25, 'Iatrofobia', 'Medo de médicos', 0),
+(26, 'Ictiofobia', 'Medo de peixes', 0),
+(27, 'Monofobia', 'Medo de ficar sozinho', 0),
+(28, 'Necrofobia', 'medo de coisas mortas', 0),
+(29, 'Noctifobia', 'Medo da noite', 0),
+(30, 'Odontofobia', 'Medo de dentes', 0),
+(31, 'Onomatofobia', 'Medo de um certo nome', 0),
+(32, 'Ofidiofobia', 'Medo de cobras', 0),
+(33, 'Ornithofobia', 'Medo de pássaros', 0),
+(34, 'Pedifobia', 'Medo de crianças', 0),
+(35, 'Fagofobia', 'Medo de comer', 0),
+(36, 'Pirofobia', 'Medo de fogo', 0),
+(37, 'Spectrofobia', 'Medo de fantasmas', 0),
+(38, 'Tafefobia', 'Medo de ser enterrado vivo', 0),
+(39, 'Talassofobia', 'medo do mar', 0),
+(40, 'Tomofobia', 'medo de cirurgia', 0),
+(41, 'Vestiofobia', 'Medo de roupas', 0),
+(42, 'Xenofobia', 'Medo de estrangeiros', 0),
+(43, 'Zoofobia', 'Medo de animais', 0);
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `golpe`
 --
 
@@ -122,6 +189,13 @@ CREATE TABLE `item` (
   `Descricao` text NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
+--
+-- Dumping data for table `item`
+--
+
+INSERT INTO `item` (`ID`, `Nome`, `Quantidade`, `Descricao`) VALUES
+(10, 'Kit médico', 1, 'Cura até 1d4 de <span style=\"color:green\">vida</span> quando usado com <span style=\"color:blue\">medicina</span>');
+
 -- --------------------------------------------------------
 
 --
@@ -138,7 +212,7 @@ CREATE TABLE `nota` (
 --
 
 INSERT INTO `nota` (`id`, `NotaText`) VALUES
-(1, 'Adicione notas <a href=\"editNota.php\">aqui<a>');
+(1, 'Insira suas anotações <a href=\"editNota.php\">aqui</a>');
 
 -- --------------------------------------------------------
 
@@ -203,7 +277,7 @@ INSERT INTO `pericia` (`ID`, `Nome`, `SubNome`, `Minimo`, `Pontos`, `Checado`, `
 (196, 'Persuadir', '', 15, 15, 0, 0),
 (197, 'Pesq. Biblioteca', '', 25, 25, 0, 0),
 (198, 'Pilotar', '', 1, 1, 0, 0),
-(199, 'Primeiros socorros', '', 30, 10, 0, 1),
+(199, 'Primeiros socorros', '', 30, 30, 0, 1),
 (200, 'Psicanálise', '', 1, 1, 0, 0),
 (201, 'Psicologia', '', 5, 5, 0, 0),
 (202, 'Pular/Saltar', '', 25, 25, 0, 1),
@@ -246,7 +320,7 @@ CREATE TABLE `personagem` (
 --
 
 INSERT INTO `personagem` (`id`, `nome`, `jogador`, `ocupacao`, `localnascimento`, `datanascimento`, `idade`, `sexo`, `bd`, `vidatotal`, `vidaatual`, `sorte`, `sanidade`, `morrendo`, `lesaograve`, `historia`) VALUES
-(1, 'Indefinido', 'Indefinido', 'Indefinido', 'Indefinido', '9999-09-09', 18, 'Indefinido', 'ERRO', 0, 0, 1, 1, 0, 0, 'Insira a história do seu personagem');
+(1, 'Indefinido', 'Indefinido', 'Indefinido', 'Indefinido', '9999-09-09', 18, 'Indefinido', '-1D6', 0, 0, 1, 1, 0, 0, 'Insira a Historia do seu personagem aqui <a href=\"EditPersonagemForm.php#historia\">aqui</a>');
 
 -- --------------------------------------------------------
 
@@ -290,6 +364,12 @@ ALTER TABLE `armasdefogo`
 -- Indexes for table `caracteristica`
 --
 ALTER TABLE `caracteristica`
+  ADD PRIMARY KEY (`ID`);
+
+--
+-- Indexes for table `fobia`
+--
+ALTER TABLE `fobia`
   ADD PRIMARY KEY (`ID`);
 
 --
@@ -337,7 +417,7 @@ ALTER TABLE `renda`
 -- AUTO_INCREMENT for table `armas`
 --
 ALTER TABLE `armas`
-  MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=23;
+  MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=27;
 
 --
 -- AUTO_INCREMENT for table `armasdefogo`
@@ -352,6 +432,12 @@ ALTER TABLE `caracteristica`
   MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
 
 --
+-- AUTO_INCREMENT for table `fobia`
+--
+ALTER TABLE `fobia`
+  MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=44;
+
+--
 -- AUTO_INCREMENT for table `golpe`
 --
 ALTER TABLE `golpe`
@@ -361,7 +447,7 @@ ALTER TABLE `golpe`
 -- AUTO_INCREMENT for table `item`
 --
 ALTER TABLE `item`
-  MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
+  MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
 
 --
 -- AUTO_INCREMENT for table `nota`
@@ -373,7 +459,7 @@ ALTER TABLE `nota`
 -- AUTO_INCREMENT for table `pericia`
 --
 ALTER TABLE `pericia`
-  MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=212;
+  MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=217;
 
 --
 -- AUTO_INCREMENT for table `personagem`

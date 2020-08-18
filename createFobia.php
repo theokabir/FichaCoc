@@ -10,5 +10,5 @@ $check = (isset($_POST['check']))?1:0;
 $query = "INSERT INTO fobia() VALUES (default, '$nome', '$desc', '$check') ";
 $result = mysqli_query($conn, $query);
 
-$_SESSION['msg_success_fobia'];
+$_SESSION['msg_success_fobia'] = "Fobia criada";
 header("Location: index.php#fobias");

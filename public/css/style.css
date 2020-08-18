@@ -79,3 +79,7 @@ ul{
     height: 250px;
     overflow: auto;
 }
+
+.caixaHistoria{
+overflow: auto;
+}

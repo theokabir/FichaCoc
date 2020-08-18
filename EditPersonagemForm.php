@@ -152,9 +152,15 @@ $nome_pers = $personagem['nome'];
                 </div>
 
                 <!-- historia -->
-                <div class="col-12">
+                <div class="col-12" id="historia">
                     <h5>
                         <label for="historia"><strong>Historia:</strong></label>
+                            <div class="alert alert-success alert-dismissible fade show col-12" role="alert">
+                                    usar uma rag <strong>br</strong> para pular linhas
+                                    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                                        <span aria-hidden="true">&times;</span>
+                                    </button>
+                                </div>
                             <!-- campo: historia -->
                             <textarea required style="resize: none" name="historia" id="historia" cols="30" rows="10" class="form form-control"><?php echo $personagem['historia']; ?></textarea>
                     </h5>

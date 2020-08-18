@@ -25,7 +25,7 @@ $nota = mysqli_fetch_assoc($query_nota_result);
 
     <div class="container-fluid">
 
-        <h3 class="text-center">Editar item</h3>
+        <h3 class="text-center">Editar Nota</h3>
         <!-- div para as informações basicas do personagem -->
         <form action="editNotaCode.php" method="post">
             <div style="margin: 0px 370px" class="border rounded row p-2">
