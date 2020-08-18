@@ -83,3 +83,8 @@ ul{
 .caixaHistoria{
 overflow: auto;
 }
+
+.caixaRowDois{
+    height: 500px;
+    overflow: auto;
+}

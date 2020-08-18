@@ -242,10 +242,10 @@ $nome_pers = $personagem['nome'];
         </div>
 
         <!-- segunda row -->
-        <div class="row border rounded">
+        <div class="row border rounded" style="height: 560px">
             <div class="col-12 col-lg-8 p-4">
                 <!-- golpes e armas -->
-                <div class="row" id="armas">
+                <div class="row" id="armas" style="height: 500px">
                     <!-- golpes -->
                     <div class="col-6 border-right">
                     
@@ -274,106 +274,107 @@ $nome_pers = $personagem['nome'];
                     </div>
                     <!-- armas -->
                     <div class="col-6 border-right" id="armas">
-                        <h5 class="text-center"><strong>Armas</strong>  <a href="addArmaForm.php" class="btn btn-outline-success">Adicionar</a></h5>
-                        <?php if(isset($_SESSION['msg_success_arma'])): ?>
-                        <div class="alert alert-success alert-dismissible fade show" role="alert">
-                            <?php echo $_SESSION['msg_success_arma']; ?>
-                            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-                                <span aria-hidden="true">&times;</span>
-                            </button>
-                        </div>
-                        <?php endif; ?>
-                        <?php if(isset($_SESSION['msg_danger_arma'])): ?>
-                            <div class="alert alert-danger alert-dismissible fade show" role="alert">
-                                <?php echo $_SESSION['msg_danger_arma']; ?>
+                        <div class="caixaRowDois">
+                            <h5 class="text-center"><strong>Armas</strong>  <a href="addArmaForm.php" class="btn btn-outline-success">Adicionar</a></h5>
+                            <?php if(isset($_SESSION['msg_success_arma'])): ?>
+                            <div class="alert alert-success alert-dismissible fade show" role="alert">
+                                <?php echo $_SESSION['msg_success_arma']; ?>
                                 <button type="button" class="close" data-dismiss="alert" aria-label="Close">
                                     <span aria-hidden="true">&times;</span>
                                 </button>
                             </div>
-                        <?php endif; ?>
-                        <?php 
-                        
-                            $query_armas = "SELECT * FROM armas ORDER BY nome";
-                            $query_result_armas = mysqli_query($conn, $query_armas);
-
-                        ?>
-
-                        <?php while($armas = mysqli_fetch_assoc($query_result_armas)): ?>
-
-                            <div class="border rounded my-2 mx-2 row">
-                                <div class="col-5">
-                                    <p><strong><a href="editArmaForm.php?id=<?php echo $armas['ID']; ?>" class="linkPericia"> <input type="checkbox" name="" id="" onclick="myFunction()"> <?php echo $armas['Nome']; ?></a></strong>
-
-                                    <?php
-                                    
-                                        if($armas['BalasTotal'] > 0){
-                                            echo "<br><strong>Municiadas: </strong>" . $armas['BalasCarregadas'];
-                                            echo "<br><strong>Carga total: </strong>" . $armas['Pente'];
-                                            echo "<br><strong>Munição: </strong>" . $armas['BalasTotal'];
-                                        }
-
-                                    ?>
-
-                                    </p>
-
+                            <?php endif; ?>
+                            <?php if(isset($_SESSION['msg_danger_arma'])): ?>
+                                <div class="alert alert-danger alert-dismissible fade show" role="alert">
+                                    <?php echo $_SESSION['msg_danger_arma']; ?>
+                                    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                                        <span aria-hidden="true">&times;</span>
+                                    </button>
                                 </div>
-                                <div class="col-5">
-                                    <p <?php  if($armas['BalasTotal'] > 0){echo "class=\"mt-4\"";}?>  style="font-size: 20px"><?php echo $armas['Dano']; ?> </p>
-                                </div>
-                                <div class="col-2">
-                                    <a href="deletarArma.php?id=<?php echo $armas['ID']; ?>" class="btn btn-outline-danger<?php if($armas['BalasTotal'] > 0){echo " mt-4 ";}else{echo " mt-1 ";} ?>">X</a> 
-                                </div>
-                                <?php if($armas['BalasTotal'] > 0): ?>
-                                    <p class="col-12"><a href="atirar.php?id=<?php echo $armas['ID']; ?>" class="btn btn-outline-info">atirar</a>   <a href="recarregar.php?id=<?php echo $armas['ID']; ?>" class="btn btn-outline-secondary">Regarregar</a></p>
-                                <?php endif;?>
-                            </div>
+                            <?php endif; ?>
+                            <?php 
+                            
+                                $query_armas = "SELECT * FROM armas ORDER BY nome";
+                                $query_result_armas = mysqli_query($conn, $query_armas);
 
-                        <?php endwhile; ?>
+                            ?>
 
+                            <?php while($armas = mysqli_fetch_assoc($query_result_armas)): ?>
+
+                                <div class="border rounded my-2 mx-2 row">
+                                    <div class="col-5">
+                                        <p><strong><a href="editArmaForm.php?id=<?php echo $armas['ID']; ?>" class="linkPericia"> <input type="checkbox" name="" id="" onclick="myFunction()"> <?php echo $armas['Nome']; ?></a></strong>
+
+                                        <?php
+                                        
+                                            if($armas['BalasTotal'] > 0){
+                                                echo "<br><strong>Municiadas: </strong>" . $armas['BalasCarregadas'];
+                                                echo "<br><strong>Carga total: </strong>" . $armas['Pente'];
+                                                echo "<br><strong>Munição: </strong>" . $armas['BalasTotal'];
+                                            }
+
+                                        ?>
+
+                                        </p>
+
+                                    </div>
+                                    <div class="col-5">
+                                        <p <?php  if($armas['BalasTotal'] > 0){echo "class=\"mt-4\"";}?>  style="font-size: 20px"><?php echo $armas['Dano']; ?> </p>
+                                    </div>
+                                    <div class="col-2">
+                                        <a href="deletarArma.php?id=<?php echo $armas['ID']; ?>" class="btn btn-outline-danger<?php if($armas['BalasTotal'] > 0){echo " mt-4 ";}else{echo " mt-1 ";} ?>">X</a> 
+                                    </div>
+                                    <?php if($armas['BalasTotal'] > 0): ?>
+                                        <p class="col-12"><a href="atirar.php?id=<?php echo $armas['ID']; ?>" class="btn btn-outline-info">atirar</a>   <a href="recarregar.php?id=<?php echo $armas['ID']; ?>" class="btn btn-outline-secondary">Regarregar</a></p>
+                                    <?php endif;?>
+                                </div>
+
+                            <?php endwhile; ?>
+                        </div>
                     </div>
                 </div>
             </div>
             <div class="col-12 col-lg-4 p-4">
                 <!-- itens -->
-                <div class="col-12" id="itens">
-                    <h5 class="text-center"><strong>Itens </strong> <a href="addItemForm.php" class="btn btn-outline-success">Adicionar</a></h5>
-                    <?php if(isset($_SESSION['msg_success_item'])): ?>
-                        <div class="alert alert-success alert-dismissible fade show" role="alert">
-                            <?php echo $_SESSION['msg_success_item']; ?>
-                            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-                                <span aria-hidden="true">&times;</span>
-                            </button>
-                        </div>
-                    <?php endif; ?>
-                    <?php if(isset($_SESSION['msg_danger_item'])): ?>
-                        <div class="alert alert-danger alert-dismissible fade show" role="alert">
-                            <?php echo $_SESSION['msg_danger_item']; ?>
-                            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-                                <span aria-hidden="true">&times;</span>
-                            </button>
-                        </div>
-                    <?php endif; ?>
-                    <?php
-
-                        $query_itens = "SELECT * FROM item";
-                        $query_result_itens = mysqli_query($conn, $query_itens);
-
-                    ?>
-
-                    <?php while($itens = mysqli_fetch_assoc($query_result_itens)): ?>
-
-                        <div class="border rounded p-4 my-2 row">
-                            <p class="col-7"> <?php echo $itens['Quantidade'] ; ?>x <strong><a href="editItemForm.php?id=<?php echo $itens['ID']; ?>" class="linkPericia"><?php echo $itens['Nome'] ; ?></a></strong></p>
-                            <p class="col-3"><a href="useItem.php?id=<?php echo  $itens['ID']; ?>" class="btn btn-outline-info">Usar</a></p>
-                            <p class="col-2"><a href="deletItem.php?id=<?php echo  $itens['ID']; ?>" class="btn btn-outline-danger">X</a></p>
-                            
-                            <div class="border rounded p-2 col-12">
-                                <?php echo $itens['Descricao']; ?>
+                <div class="col-12 caixaRowDois" id="itens">
+                    <div class="">
+                        <h5 class="text-center"><strong>Itens </strong> <a href="addItemForm.php" class="btn btn-outline-success">Adicionar</a></h5>
+                        <?php if(isset($_SESSION['msg_success_item'])): ?>
+                            <div class="alert alert-success alert-dismissible fade show" role="alert">
+                                <?php echo $_SESSION['msg_success_item']; ?>
+                                <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                                    <span aria-hidden="true">&times;</span>
+                                </button>
                             </div>
-                        </div>
+                        <?php endif; ?>
+                        <?php if(isset($_SESSION['msg_danger_item'])): ?>
+                            <div class="alert alert-danger alert-dismissible fade show" role="alert">
+                                <?php echo $_SESSION['msg_danger_item']; ?>
+                                <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                                    <span aria-hidden="true">&times;</span>
+                                </button>
+                            </div>
+                        <?php endif; ?>
+                        <?php
 
-                    <?php endwhile; ?>
+                            $query_itens = "SELECT * FROM item ORDER BY nome";
+                            $query_result_itens = mysqli_query($conn, $query_itens);
 
+                        ?>
+
+                        <?php while($itens = mysqli_fetch_assoc($query_result_itens)): ?>
+                            <div class="border rounded p-4 my-2 row col-12">
+                                <p class="col-7"> <?php echo $itens['Quantidade'] ; ?>x <strong><a href="editItemForm.php?id=<?php echo $itens['ID']; ?>" class="linkPericia"><?php echo $itens['Nome'] ; ?></a></strong></p>
+                                <p class="col-3"><a href="useItem.php?id=<?php echo  $itens['ID']; ?>" class="btn btn-outline-info">Usar</a></p>
+                                <p class="col-2"><a href="deletItem.php?id=<?php echo  $itens['ID']; ?>" class="btn btn-outline-danger">X</a></p>
+                                
+                                <div class="border rounded p-2 col-12">
+                                    <?php echo $itens['Descricao']; ?>
+                                </div>
+                            </div>
+
+                        <?php endwhile; ?>
+                    </div>
                 </div>
             </div>
         </div>
