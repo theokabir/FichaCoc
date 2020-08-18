@@ -17,7 +17,7 @@ if($nextQtd < 0){
     header("Location: index.php#itens");
 }else{
     if($nextQtd == 0){
-        $_SESSION['msg_danger_item'] = "o item <strong>$nome</strong> Acabou";
+        $_SESSION['msg_danger_item'] = "O item <strong>$nome</strong> Acabou";
     }
 
     $query2 = "UPDATE item SET Quantidade = '$nextQtd' WHERE ID = '$id'";

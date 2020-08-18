@@ -32,13 +32,13 @@ $nome_pers = $personagem['nome'];
                     <input type="text" name="Dano" id="Dano" class="form form-control" required>
             
                 <label for="pente">Carga total:</label>
-                    <input type="number" name="pente" id="pente" class="form form-control" placeholder="(não preencher para armas meelee)">
+                    <input type="number" name="pente" id="pente" class="form form-control" placeholder="(não preencher para armas melee)">
                 
                 <label for="balasCarregadas">Municiadas:</label>
-                    <input type="number" name="balasCarregadas" id="balasCarregadas" class="form form-control" placeholder="(não preencher para armas meelee)">
+                    <input type="number" name="balasCarregadas" id="balasCarregadas" class="form form-control" placeholder="(não preencher para armas melee)">
                 
                 <label for="balasTotal">Munição total:</label>
-                    <input type="number" name="balasTotal" id="balasTotal" class="form form-control" placeholder="(não preencher para armas meelee)">
+                    <input type="number" name="balasTotal" id="balasTotal" class="form form-control" placeholder="(não preencher para armas melee)">
 
                 <input type="submit" value="Adicionar" class="btn btn-success btn-block mt-2">
 

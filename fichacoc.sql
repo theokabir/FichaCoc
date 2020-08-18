@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Aug 18, 2020 at 09:21 PM
+-- Generation Time: Aug 18, 2020 at 10:18 PM
 -- Server version: 10.4.13-MariaDB
 -- PHP Version: 7.4.7
 
@@ -271,7 +271,7 @@ INSERT INTO `pericia` (`ID`, `Nome`, `SubNome`, `Minimo`, `Pontos`, `Checado`, `
 (190, 'Navegar', '', 10, 10, 0, 0),
 (191, 'Ocultar', '', 15, 15, 0, 0),
 (192, 'Ocultismo', '', 5, 5, 0, 0),
-(193, 'Ofício', '', 1, 1, 0, 1),
+(193, 'Ofício', '', 1, 1, 1, 1),
 (194, 'Op. Maq. Pesada', '', 1, 1, 0, 0),
 (195, 'Outra Língua', '', 1, 1, 0, 0),
 (196, 'Persuadir', '', 15, 15, 0, 0),
@@ -320,7 +320,7 @@ CREATE TABLE `personagem` (
 --
 
 INSERT INTO `personagem` (`id`, `nome`, `jogador`, `ocupacao`, `localnascimento`, `datanascimento`, `idade`, `sexo`, `bd`, `vidatotal`, `vidaatual`, `sorte`, `sanidade`, `morrendo`, `lesaograve`, `historia`) VALUES
-(1, 'Indefinido', 'Indefinido', 'Indefinido', 'Indefinido', '9999-09-09', 18, 'Indefinido', '-1D6', 0, 0, 1, 1, 0, 0, 'Insira a Historia do seu personagem aqui <a href=\"EditPersonagemForm.php#historia\">aqui</a>');
+(1, 'Indefinido', 'Indefinido', 'Indefinido', 'Indefinido', '9999-09-09', 18, 'Indefinido', '-1D6', 0, 0, 1, 1, 0, 0, 'Insira a Historia do seu personagem <a href=\"EditPersonagemForm.php#historia\">aqui</a>');
 
 -- --------------------------------------------------------
 
