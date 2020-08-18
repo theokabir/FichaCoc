@@ -15,6 +15,7 @@ $nome_pers = $personagem['nome'];
     <title>Ficha - <?php echo $nome_pers ; ?> </title>
     <link rel="stylesheet" href="./public/css/bootstrap.css">
     <link rel="stylesheet" href="./public/css/style.css">
+    <link rel="icon" type="image/png" href="icon/icone.png">
 </head>
 <body>
     <div class="container-fluid">
