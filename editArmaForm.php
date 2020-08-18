@@ -20,6 +20,7 @@ $arma = mysqli_fetch_assoc($query_arma_result);
     <title>Ficha - <?php echo $nome_pers ; ?> </title>
     <link rel="stylesheet" href="./public/css/bootstrap.css">
     <link rel="stylesheet" href="./public/css/style.css">
+    <link rel="icon" type="image/png" href="icon/icone.png">
 </head>
 <body>
 
