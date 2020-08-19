@@ -10,7 +10,7 @@ $nome_pers = $personagem['nome'];
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <!-- Criado por: Théo Kabir Novais de Carvallho
+    <!-- Criado por: Théo Kabir Novais de Carvalho
         ajudado por: Lucas Lima, Gabriel Fernandes e Fabio Yukio -->
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
